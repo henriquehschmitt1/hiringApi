@@ -1,6 +1,8 @@
+import internal from "stream"
+
 export = {
 
-    exists(param, paramName) {
+    exists(param: string, paramName: string) {
         if (!param) {
             throw {
                 status: 400,
@@ -9,16 +11,16 @@ export = {
         }
     },
 
-    checkLength(param, length) {
+    checkLength(param: string, length: number) {
         if (param.length !== length) {
             throw {
                 status: 400,
-                errorMessage: `Param ${param} does not meet the correct length ${length}`
+                errorMessage: `Param ${param} does not meet the correct length ${length}, current length ${param.length}`
             }
         }
     },
 
-    existsCompanyParams(name, cnpj, zipCode, street, city, state, additionalAddressData) {
+    existsCompanyParams(name: string, cnpj: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
         this.exists(name, 'name')
         this.exists(cnpj, 'cnpj')
         this.exists(zipCode, 'zipCode')
@@ -28,22 +30,23 @@ export = {
         this.exists(additionalAddressData, 'additionalAddressData')
     },
 
-    isValidCompany(name, cnpj, zipCode, street, city, state, additionalAddressData) {
+    isValidCompany(name: string, cnpj: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
         try {
             this.existsCompanyParams(name, cnpj, zipCode, street, city, state, additionalAddressData)
             this.checkLength(cnpj, 14)
             this.checkLength(zipCode, 8)
-            //validar cpf e cnpj
+            console.log("passou por isValidCompany")
+            //validar cpf e cnpj, criar os metodos abaixo
         } catch (error) {
             console.log(error)
         }
     },
 
-    validateCnpj(cnpj) {
+    validateCnpj(cnpj: any) {
 
     },
 
-    validateCpf(cpf) {
+    validateCpf(cpf: any) {
 
 
     }

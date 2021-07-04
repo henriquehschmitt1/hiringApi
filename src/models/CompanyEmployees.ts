@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 
-class CompanyEmployee extends Model {
+class CompanyEmployees extends Model {
     static init(sequelize: any) {
         super.init({
             companyId: DataTypes.INTEGER,
@@ -11,4 +11,4 @@ class CompanyEmployee extends Model {
     }
 }
 
-export = CompanyEmployee
+export = CompanyEmployees

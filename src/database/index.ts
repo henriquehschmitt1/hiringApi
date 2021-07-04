@@ -5,7 +5,7 @@ const dbConfig = require('../config/database')
 import Addresses from "../models/Addresses"
 import Companies from "../models/Companies"
 import Employee from "../models/Employees"
-import CompanyEmployee from "../models/CompanyEmployee"
+import CompanyEmployees from "../models/CompanyEmployees"
 
 
 const connection = new Sequelize(dbConfig)
@@ -13,6 +13,6 @@ const connection = new Sequelize(dbConfig)
 Addresses.init(connection)
 Companies.init(connection)
 Employee.init(connection)
-CompanyEmployee.init(connection)
+CompanyEmployees.init(connection)
 
 export = connection

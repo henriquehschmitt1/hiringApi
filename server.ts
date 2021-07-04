@@ -1,3 +1,4 @@
+require('./src/database/index')
 import express from 'express';
 import router from './src/routes/routes'
 

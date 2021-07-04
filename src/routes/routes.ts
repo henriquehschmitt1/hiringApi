@@ -13,6 +13,7 @@ router.post('/company', companyController.createCompany)
 router.get('/company', companyController.getCompany)
 
 router.post('/employee', employeeController.createEmployee)
+router.get('/employee', employeeController.getEmployee)
 
 router.post('/assign', assignController.companyEmployee)
 

@@ -7,6 +7,14 @@ export = {
         return arrayId
     },
 
+    getEmployeeCompaniesIds(companyEmployee: any) {
+        let arrayId = []
+        for (let companyId of companyEmployee) {
+            arrayId.push(companyId.dataValues.companyId)
+        }
+        return arrayId
+    },
+
     getEmployees(employees: any) {
         let employeeArray = []
         for (let employee of employees) {

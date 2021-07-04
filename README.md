@@ -33,6 +33,12 @@ This command will use the migrations located at src/database/migrations to set u
 npx sequelize db:migrate
 ```
 
+## Running
+
+```bash
+npm start
+```
+
 ## Routes
 All routes, by default, are served at localhost port 8080.
 

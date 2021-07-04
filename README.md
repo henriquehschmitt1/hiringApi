@@ -38,8 +38,8 @@ All routes, by default, are served at localhost port 8080.
 
 ## GET Routes
 
-* /company?cnpj=49417447000150 - This route will get all the employees related to a company, by passing the company CNPJ as a query param.
-* /employee?cpf=11026868912 - This route wil get all the the companies related to an employee, by passing the employee CPF as a query param.
+* /company?cnpj=15163331000110 - This route will get all the employees related to a company, by passing the company CNPJ as a query param.
+* /employee?cpf=71449931006 - This route wil get all the the companies related to an employee, by passing the employee CPF as a query param.
 
 ## POST Routes
 
@@ -62,7 +62,7 @@ All routes, by default, are served at localhost port 8080.
 ```bash
 {
     "name": "henrique",
-    "cpf": "91992583900",
+    "cpf": "71449931006",
     "email": "henriquehschmitt@hotmail.com",
     "zipCode": "88101260",
     "street": "av salvador di bernardi",

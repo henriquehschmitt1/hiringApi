@@ -1,9 +1,18 @@
 import express from 'express'
+import { CompanyController } from '../controllers/companyController'
+import { EmployeeController } from '../controllers/employeeController'
+
+const companyController = new CompanyController()
+const employeeController = new EmployeeController()
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json({ a: "asdasds" })
-})
+router.post('/company', companyController.createCompany)
+
+router.post('/employee', employeeController.createEmployee)
+
+//3 posts, cadastrar empregado, empresa e um no outro
+//2 gets, ao fazer get para empresa mostrar todos os funcionarios associados.
+// ao fazer get para empregado, mostrar todos os funcionarios associados.
 
 export = router

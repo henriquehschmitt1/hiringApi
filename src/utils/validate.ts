@@ -29,6 +29,11 @@ export = {
         }
     },
 
+    isValidCnpj(cnpj: string) {
+        this.exists(cnpj, 'cnpj')
+        //this.validateCnpj(cnpj)
+    },
+
     areValidResults(company: object, employee: object) {
         if (!(company && employee)) {
             throw {

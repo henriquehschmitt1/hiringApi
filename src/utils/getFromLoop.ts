@@ -21,5 +21,13 @@ export = {
             employeeArray.push(employee.name)
         }
         return employeeArray
+    },
+
+    getCompanies(companies: any) {
+        let companyArray = []
+        for (let company of companies) {
+            companyArray.push(company.name)
+        }
+        return companyArray
     }
 }

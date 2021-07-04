@@ -84,7 +84,6 @@ export = {
     validateCnpj(cnpj: any) {
         const firstDV = this.getCnpjDigit(cnpj, 5, 13)
         const secondDV = this.getCnpjDigit(cnpj, 6, 12)
-        console.log(firstDV, secondDV)
         if (!(firstDV === cnpj.charAt(12) && secondDV === cnpj.charAt(13))) {
             throw {
                 status: 400,

@@ -49,7 +49,7 @@ All routes, by default, are served at localhost port 8080.
 
 ## POST Routes
 
-* /company- This route will let you create a company, by passing name, cnpj, zipcode, street, city, state and additionalAddressData on the body
+* /company - This route will let you create a company, by passing name, cnpj, zipcode, street, city, state and additionalAddressData on the body
 
 ```bash
 {

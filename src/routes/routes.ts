@@ -17,8 +17,4 @@ router.get('/employee', employeeController.getEmployee)
 
 router.post('/assign', assignController.companyEmployee)
 
-//3 posts, cadastrar empregado, empresa e um no outro
-//2 gets, ao fazer get para empresa mostrar todos os funcionarios associados.
-// ao fazer get para empregado, mostrar todos os funcionarios associados.
-
 export = router

@@ -34,6 +34,11 @@ export = {
         //this.validateCnpj(cnpj)
     },
 
+    isValidCpf(cpf: string) {
+        this.exists(cpf, 'cpf')
+        //this.validateCpf(cpf)
+    },
+
     areValidResults(company: object, employee: object) {
         if (!(company && employee)) {
             throw {

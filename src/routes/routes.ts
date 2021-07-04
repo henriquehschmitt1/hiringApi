@@ -10,6 +10,7 @@ const assignController = new AssignController()
 const router = express.Router()
 
 router.post('/company', companyController.createCompany)
+router.get('/company', companyController.getCompany)
 
 router.post('/employee', employeeController.createEmployee)
 

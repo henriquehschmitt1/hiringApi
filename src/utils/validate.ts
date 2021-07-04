@@ -1,6 +1,6 @@
 export = {
 
-    exists(param: string, paramName: string) {
+    exists(param: any, paramName: string) {
         if (!param) {
             throw {
                 status: 400,
@@ -14,6 +14,26 @@ export = {
             throw {
                 status: 400,
                 errorMessage: `Param ${param} does not meet the correct length ${length}, current length ${param.length}`
+            }
+        }
+    },
+
+    isId(companyId: number, employeeId: number) {
+        this.exists(companyId, 'companyId')
+        this.exists(employeeId, 'employeeId')
+        if (!(Number.isInteger(companyId) && Number.isInteger(employeeId))) {
+            throw {
+                status: 400,
+                errorMessage: `One of the ids is not an Integer`
+            }
+        }
+    },
+
+    areValidResults(company: object, employee: object) {
+        if (!(company && employee)) {
+            throw {
+                status: 400,
+                errorMessage: `One of the ids does not exists`
             }
         }
     },

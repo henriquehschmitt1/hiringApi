@@ -31,12 +31,12 @@ export = {
 
     isValidCnpj(cnpj: string) {
         this.exists(cnpj, 'cnpj')
-        //this.validateCnpj(cnpj)
+        this.validateCnpj(cnpj)
     },
 
     isValidCpf(cpf: string) {
         this.exists(cpf, 'cpf')
-        //this.validateCpf(cpf)
+        this.validateCpf(cpf)
     },
 
     areValidResults(company: object, employee: object) {
@@ -50,7 +50,7 @@ export = {
 
     existsCompanyParams(name: string, cnpj: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
         this.exists(name, 'name')
-        this.exists(cnpj, 'cnpj')
+        this.isValidCnpj(cnpj)
         this.exists(zipCode, 'zipCode')
         this.exists(street, 'street')
         this.exists(city, 'city')
@@ -60,7 +60,7 @@ export = {
 
     existsEmployeeParams(name: string, cpf: string, email: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
         this.exists(name, 'name')
-        this.exists(cpf, 'cpf')
+        this.isValidCpf(cpf)
         this.exists(email, 'email')
         this.exists(zipCode, 'zipCode')
         this.exists(street, 'street')
@@ -72,23 +72,81 @@ export = {
     isValidCompany(name: string, cnpj: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
         this.existsCompanyParams(name, cnpj, zipCode, street, city, state, additionalAddressData)
         this.checkLength(cnpj, 14)
-        //validar cnpj
         this.checkLength(zipCode, 8)
     },
 
     isValidEmployee(name: string, cpf: string, email: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
         this.existsEmployeeParams(name, cpf, email, zipCode, street, city, state, additionalAddressData)
         this.checkLength(cpf, 11)
-        //validar cpf
         this.checkLength(zipCode, 8)
     },
 
     validateCnpj(cnpj: any) {
-
+        const firstDV = this.getCnpjDigit(cnpj, 5, 13)
+        const secondDV = this.getCnpjDigit(cnpj, 6, 12)
+        console.log(firstDV, secondDV)
+        if (!(firstDV === cnpj.charAt(12) && secondDV === cnpj.charAt(13))) {
+            throw {
+                status: 400,
+                errorMessage: `Invalid CNPJ`
+            }
+        }
     },
 
     validateCpf(cpf: any) {
+        const firstDV = this.getCpfDigit(cpf, 10, 9)
+        const secondDV = this.getCpfDigit(cpf, 11, 10)
+        if (!(firstDV === cpf.charAt(9) && secondDV === cpf.charAt(10))) {
+            throw {
+                status: 400,
+                errorMessage: `Invalid CPF`
+            }
+        }
+    },
+    getCpfDigit(digits: string, weight: number, digitQtt: number) {
+        let digit, sum, result, num
+        sum = 0
 
+        for (let i = 0; i < digitQtt; i++) {
+            num = parseInt(digits.charAt(i))
+            sum = sum + (num * weight)
+            weight--
+        }
 
+        result = 11 - (sum % 11)
+
+        if (result > 9) {
+            digit = '0'
+        }
+        else {
+            digit = result.toString()
+        }
+
+        return digit
+    },
+
+    getCnpjDigit(digits: string, weight: number, digitQtt: number) {
+        let digit, sum, result, num
+        sum = 0
+
+        for (let i = 0; i < digitQtt; i++) {
+            num = parseInt(digits.charAt(i))
+            sum = sum + (num * weight)
+            weight++
+            if (weight > 9) {
+                weight = 2
+            }
+        }
+
+        result = 11 - (sum % 11)
+
+        if (result > 9) {
+            digit = '0'
+        }
+        else {
+            digit = result.toString()
+        }
+
+        return digit
     }
 }

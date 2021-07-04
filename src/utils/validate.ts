@@ -1,5 +1,3 @@
-import internal from "stream"
-
 export = {
 
     exists(param: string, paramName: string) {

@@ -31,15 +31,10 @@ export = {
     },
 
     isValidCompany(name: string, cnpj: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
-        try {
-            this.existsCompanyParams(name, cnpj, zipCode, street, city, state, additionalAddressData)
-            this.checkLength(cnpj, 14)
-            this.checkLength(zipCode, 8)
-            console.log("passou por isValidCompany")
-            //validar cpf e cnpj, criar os metodos abaixo
-        } catch (error) {
-            console.log(error)
-        }
+        this.existsCompanyParams(name, cnpj, zipCode, street, city, state, additionalAddressData)
+        this.checkLength(cnpj, 14)
+        this.checkLength(zipCode, 8)
+        //validar cpf e cnpj, criar os metodos abaixo
     },
 
     validateCnpj(cnpj: any) {

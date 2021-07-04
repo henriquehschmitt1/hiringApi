@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize')
 
-class Employee extends Model {
-    static init(sequelize) {
+class Employees extends Model {
+    static init(sequelize: any) {
         super.init({
             name: DataTypes.STRING,
             cpf: DataTypes.STRING,
@@ -13,4 +13,4 @@ class Employee extends Model {
     }
 }
 
-module.exports = Employee
+export = Employees

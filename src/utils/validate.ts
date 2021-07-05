@@ -81,6 +81,30 @@ export = {
         this.checkLength(zipCode, 8)
     },
 
+    isValidCompanyUpdate(companyId: number, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
+        this.exists(companyId, 'companyId')
+        if (!Number.isInteger(companyId)) {
+            throw {
+                status: 400,
+                errorMessage: `companyId is not an Integer`
+            }
+        }
+        this.exists(zipCode, 'zipCode')
+        this.exists(street, 'street')
+        this.exists(city, 'city')
+        this.exists(state, 'state')
+        this.exists(additionalAddressData, 'additionalAddressData')
+    },
+
+    isValidResult(result: object, id: number) {
+        if (!result) {
+            throw {
+                status: 400,
+                errorMessage: `No result for id ${id}`
+            }
+        }
+    },
+
     validateCnpj(cnpj: any) {
         const firstDV = this.getCnpjDigit(cnpj, 5, 13)
         const secondDV = this.getCnpjDigit(cnpj, 6, 12)

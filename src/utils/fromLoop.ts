@@ -1,3 +1,5 @@
+import CompanyEmployees from "../models/CompanyEmployees"
+
 export = {
     getCompanyEmployeeIds(companyEmployee: any) {
         let arrayId = []
@@ -29,5 +31,17 @@ export = {
             companyArray.push(company.name)
         }
         return companyArray
+    },
+
+    async deleteCompanyEmployees(companiesEmployees: any, companyId: number) {
+        for (let companyEmployee of companiesEmployees) {
+            console.log(companyEmployee)
+            await CompanyEmployees.destroy({
+                where : {
+                    id: companyEmployee.id,
+                    companyId
+                }
+            })
+        }
     }
 }

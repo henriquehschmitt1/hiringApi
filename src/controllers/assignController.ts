@@ -21,4 +21,21 @@ export class AssignController {
             res.json({ error })
         }
     }
+
+    async unassign(req: any, res: any) {
+        const { companyEmployeeId } = req.query
+        try {
+            Validate.exists(companyEmployeeId, 'companyEmployeeId')
+
+            const companyEmployee = await CompanyEmployees.destroy({
+                where: {
+                    id: companyEmployeeId
+                }
+            })
+
+            res.json({ companyEmployee })
+        } catch (error) {
+            res.json({ error })
+        }
+    }
 }

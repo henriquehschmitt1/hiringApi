@@ -20,5 +20,6 @@ router.put('/employee', employeeController.updateEmployee)
 router.delete('/employee', employeeController.deleteEmployee)
 
 router.post('/assign', assignController.companyEmployee)
+router.delete('/assign', assignController.unassign)
 
 export = router

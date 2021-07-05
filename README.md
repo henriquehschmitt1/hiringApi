@@ -42,12 +42,12 @@ npm start
 ## Routes
 All routes, by default, are served at localhost port 8080.
 
-## GET Routes
+## GET
 
 * /company?cnpj=15163331000110 - This route will get all the employees related to a company, by passing the company CNPJ as a query param.
 * /employee?cpf=71449931006 - This route wil get all the the companies related to an employee, by passing the employee CPF as a query param.
 
-## POST Routes
+## POST
 
 * /company - This route will let you create a company, by passing name, cnpj, zipcode, street, city, state and additionalAddressData on the body
 
@@ -86,3 +86,36 @@ All routes, by default, are served at localhost port 8080.
     "employeeId" : 1
 }
 ```
+
+## PUT
+
+* /company - This route will let you update the address of a specific company, by passing the companyId, zipcode, street, city, state and additionalAddressData on the body.
+
+```bash
+{
+    "companyId" : 1,
+    "zipCode": "88101250",
+    "street": "av ledio joao martins",
+    "city": "sao jose",
+    "state": "SC",
+    "additionalAddressData": "near the supermarket"
+}
+```
+* /employee - This route will let you update the address of a specific employee, by passing the employeeId, zipcode, street, city, state and additionalAddressData on the body.
+
+```bash
+{
+    "employeeId" : 1,
+    "zipCode": "88101250",
+    "street": "av ledio joao martins",
+    "city": "sao jose",
+    "state": "SC",
+    "additionalAddressData": "near the supermarket"
+}
+```
+
+## DELETE
+
+* /company?companyId=1 - This route will let you soft delete a company, by passing the companyId as a query param.
+
+* /employee?employeeId=1 - This route will let you soft delete an employee, by passing the employeeId as a query param.

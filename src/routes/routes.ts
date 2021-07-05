@@ -16,6 +16,8 @@ router.delete('/company', companyController.deleteCompany)
 
 router.post('/employee', employeeController.createEmployee)
 router.get('/employee', employeeController.getEmployee)
+router.put('/employee', employeeController.updateEmployee)
+router.delete('/employee', employeeController.deleteEmployee)
 
 router.post('/assign', assignController.companyEmployee)
 

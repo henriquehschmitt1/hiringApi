@@ -11,6 +11,8 @@ const router = express.Router()
 
 router.post('/company', companyController.createCompany)
 router.get('/company', companyController.getCompany)
+router.put('/company', companyController.updateCompany)
+router.delete('/company', companyController.deleteCompany)
 
 router.post('/employee', employeeController.createEmployee)
 router.get('/employee', employeeController.getEmployee)

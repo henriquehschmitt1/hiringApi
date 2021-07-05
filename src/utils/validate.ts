@@ -81,12 +81,12 @@ export = {
         this.checkLength(zipCode, 8)
     },
 
-    isValidCompanyUpdate(companyId: number, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
-        this.exists(companyId, 'companyId')
-        if (!Number.isInteger(companyId)) {
+    isValidUpdate(id: number, idType: string, zipCode: string, street: string, city: string, state: string, additionalAddressData: string) {
+        this.exists(id, idType)
+        if (!Number.isInteger(id)) {
             throw {
                 status: 400,
-                errorMessage: `companyId is not an Integer`
+                errorMessage: `${idType} is not an Integer`
             }
         }
         this.exists(zipCode, 'zipCode')

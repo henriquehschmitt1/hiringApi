@@ -58,7 +58,7 @@ export class CompanyController {
     async updateCompany(req: any, res: any) {
         const { companyId, zipCode, street, city, state, additionalAddressData } = req.body
         try {
-            Validate.isValidCompanyUpdate(companyId, zipCode, street, city, state, additionalAddressData)
+            Validate.isValidUpdate(companyId, 'companyId', zipCode, street, city, state, additionalAddressData)
 
             const company = await Companies.findByPk(companyId)
 

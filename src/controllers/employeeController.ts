@@ -3,7 +3,7 @@ import Companies from "../models/Companies"
 import CompanyEmployees from "../models/CompanyEmployees"
 import Employees from "../models/Employees"
 import Validate from "../utils/validate"
-import GetFromLoop from "../utils/getFromLoop"
+import FromLoop from "../utils/fromLoop"
 
 export class EmployeeController {
 
@@ -38,7 +38,7 @@ export class EmployeeController {
                 }
             })
 
-            const companyIds = GetFromLoop.getEmployeeCompaniesIds(companyEmployee)
+            const companyIds = FromLoop.getEmployeeCompaniesIds(companyEmployee)
 
             const companies = await Companies.findAll({
                 where: {
@@ -46,9 +46,57 @@ export class EmployeeController {
                 }
             })
 
-            const companyArray = GetFromLoop.getCompanies(companies)
+            const companyArray = FromLoop.getCompanies(companies)
 
             res.json({ employeeName: employee.dataValues.name, companies: companyArray })
+        } catch (error) {
+            res.json({ error })
+        }
+    }
+
+    async updateEmployee(req: any, res: any) {
+        const { employeeId, zipCode, street, city, state, additionalAddressData } = req.body
+        try {
+            Validate.isValidUpdate(employeeId, 'employeeId', zipCode, street, city, state, additionalAddressData)
+
+            const employee = await Employees.findByPk(employeeId)
+
+            Validate.isValidResult(employee, employeeId)
+
+            const address = await Addresses.create({ zipCode, street, city, state, additionalAddressData })
+
+            employee.addressId = address.dataValues.id
+
+            const updatedEmployee = await employee.save()
+
+            res.json({ updatedEmployee })
+        } catch (error) {
+            res.json({ error })
+        }
+    }
+
+    async deleteEmployee(req: any, res: any) {
+        const { employeeId } = req.query
+        try {
+            Validate.exists(employeeId, 'employeeId')
+
+            const employee = await Employees.destroy({
+                where: {
+                    id: employeeId
+                }
+            })
+
+            const companiesEmployees = await CompanyEmployees.findAll({
+                where: {
+                    employeeId
+                }
+            })
+
+            if (companiesEmployees) {
+                await FromLoop.deleteCompanyEmployeesByEmployeeId(companiesEmployees, employeeId)
+            }
+
+            res.json({ company: employee })
         } catch (error) {
             res.json({ error })
         }

@@ -119,3 +119,5 @@ All routes, by default, are served at localhost port 8080.
 * /company?companyId=1 - This route will let you soft delete a company, by passing the companyId as a query param.
 
 * /employee?employeeId=1 - This route will let you soft delete an employee, by passing the employeeId as a query param.
+
+* /assign?companyEmployeeId=1 - This route will let you soft delete an assignment of a company and employee, by passing the companyEmployeeId as a query param.

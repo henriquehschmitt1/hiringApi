@@ -8,7 +8,8 @@ class Employees extends Model {
             email: DataTypes.STRING,
             addressId: DataTypes.INTEGER
         }, {
-            sequelize
+            sequelize,
+            paranoid: true
         })
     }
 }

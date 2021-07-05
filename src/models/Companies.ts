@@ -7,7 +7,8 @@ class Companies extends Model {
             cnpj: DataTypes.STRING,
             addressId: DataTypes.INTEGER
         }, {
-            sequelize
+            sequelize,
+            paranoid: true
         })
     }
 }

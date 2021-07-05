@@ -6,7 +6,8 @@ class CompanyEmployees extends Model {
             companyId: DataTypes.INTEGER,
             employeeId: DataTypes.INTEGER
         }, {
-            sequelize
+            sequelize,
+            paranoid: true
         })
     }
 }

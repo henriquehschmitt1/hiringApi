@@ -35,11 +35,21 @@ export = {
 
     async deleteCompanyEmployeesByCompanyId(companiesEmployees: any, companyId: number) {
         for (let companyEmployee of companiesEmployees) {
-            console.log(companyEmployee)
             await CompanyEmployees.destroy({
-                where : {
+                where: {
                     id: companyEmployee.id,
                     companyId
+                }
+            })
+        }
+    },
+
+    async deleteCompanyEmployeesByEmployeeId(companiesEmployees: any, employeeId: number) {
+        for (let companyEmployee of companiesEmployees) {
+            await CompanyEmployees.destroy({
+                where: {
+                    id: companyEmployee.id,
+                    employeeId
                 }
             })
         }

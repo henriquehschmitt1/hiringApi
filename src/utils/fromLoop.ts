@@ -33,7 +33,7 @@ export = {
         return companyArray
     },
 
-    async deleteCompanyEmployees(companiesEmployees: any, companyId: number) {
+    async deleteCompanyEmployeesByCompanyId(companiesEmployees: any, companyId: number) {
         for (let companyEmployee of companiesEmployees) {
             console.log(companyEmployee)
             await CompanyEmployees.destroy({

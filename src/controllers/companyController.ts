@@ -94,7 +94,7 @@ export class CompanyController {
             })
 
             if (companiesEmployees) {
-                await FromLoop.deleteCompanyEmployees(companiesEmployees, companyId)
+                await FromLoop.deleteCompanyEmployeesByCompanyId(companiesEmployees, companyId)
             }
 
             res.json({ company })

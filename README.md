@@ -39,7 +39,7 @@ npx sequelize db:migrate
 npm start
 ```
 
-## Routes
+# Routes
 All routes, by default, are served at localhost port 8080.
 
 ## GET

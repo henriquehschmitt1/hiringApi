@@ -46,6 +46,7 @@ All routes, by default, are served at localhost port 8080.
 
 * /company?cnpj=15163331000110 - This route will get all the employees related to a company, by passing the company CNPJ as a query param.
 * /employee?cpf=71449931006 - This route wil get all the the companies related to an employee, by passing the employee CPF as a query param.
+* /cep?cep=88101260 - This route will retrieve the CEP information via an external API.
 
 ## POST
 

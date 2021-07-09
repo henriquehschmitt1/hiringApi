@@ -2,10 +2,12 @@ import express from 'express'
 import { CompanyController } from '../controllers/companyController'
 import { EmployeeController } from '../controllers/employeeController'
 import { AssignController } from '../controllers/assignController'
+import { CepController } from '../controllers/cepController'
 
 const companyController = new CompanyController()
 const employeeController = new EmployeeController()
 const assignController = new AssignController()
+const cepController = new CepController()
 
 const router = express.Router()
 
@@ -21,5 +23,7 @@ router.delete('/employee', employeeController.deleteEmployee)
 
 router.post('/assign', assignController.companyEmployee)
 router.delete('/assign', assignController.unassign)
+
+router.post('/cep', cepController.getCep)
 
 export = router

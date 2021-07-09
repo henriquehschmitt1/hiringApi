@@ -24,6 +24,6 @@ router.delete('/employee', employeeController.deleteEmployee)
 router.post('/assign', assignController.companyEmployee)
 router.delete('/assign', assignController.unassign)
 
-router.post('/cep', cepController.getCep)
+router.get('/cep', cepController.getCep)
 
 export = router
